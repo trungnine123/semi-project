@@ -4,16 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->nullable(); // Option 2: Allow NULL values
+            $table->string('name', 255);
             $table->integer('parent_id');
             $table->text('description');
             $table->longText('content');
@@ -25,9 +27,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('menus');
     }
-};
+}
